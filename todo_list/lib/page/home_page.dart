@@ -39,6 +39,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      body: tabs[selectedIndex],
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        backgroundColor: Colors.black,
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
