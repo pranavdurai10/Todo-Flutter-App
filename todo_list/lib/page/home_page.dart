@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/main.dart';
+import 'package:todo_list/widget/add_todo_dialog_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Contains the two main pages
     final tabs = [
       Container(),
       Container(),
@@ -20,6 +22,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(MyApp.title),
       ),
+
+      //Defining the UI for bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white.withOpacity(0.7),
@@ -28,6 +32,8 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) => setState(() {
           selectedIndex = index;
         }),
+
+        //Declaration of two sub pages for both 'Todo' and 'Done' tasks
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.fact_check_outlined),
@@ -40,10 +46,16 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: tabs[selectedIndex],
+
+      //Floating action button to add new task from the main page
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: Colors.black,
-        onPressed: () {},
+        onPressed: () => showDialog(
+          context: context,
+          builder: (context) => AddTodoDialogWidget(),
+          barrierDismissible: false,
+        ),
         child: Icon(Icons.add),
       ),
     );
