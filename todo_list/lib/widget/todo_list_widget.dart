@@ -10,13 +10,22 @@ class TodoListWidget extends StatelessWidget {
     final provider = Provider.of<TodosProvider>(context);
     final todos = provider.todos;
 
-    return ListView.builder(
-      itemCount: todos.length,
-      itemBuilder: (context, index) {
-        final todo = todos[index];
+    return todos.isEmpty
+        ? Center(
+            child: Text(
+            'No Tasks for today',
+            style: TextStyle(fontSize: 20),
+          ))
+        : ListView.separated(
+            physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.all(16),
+            separatorBuilder: (context, index) => Container(height: 10),
+            itemCount: todos.length,
+            itemBuilder: (context, index) {
+              final todo = todos[index];
 
-        return TodoWidget(todo: todo);
-      },
-    );
+              return TodoWidget(todo: todo);
+            },
+          );
   }
 }

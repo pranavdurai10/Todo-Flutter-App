@@ -12,8 +12,8 @@ class TodosProvider extends ChangeNotifier {
       title: 'Finish some code',
     ),
     Todo(createdTime: DateTime.now(), title: 'Groceries', description: '''- Eggs
-      - Milk 
-      - Washing Soap'''),
+- Milk 
+- Washing Soap'''),
   ];
 
   List<Todo> get todos => _Todos.where((todo) => todo.isDone == false).toList();

@@ -6,7 +6,7 @@ import 'package:todo_list/provider/todos.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Todo App';
+  static final String title = 'Todoly';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
