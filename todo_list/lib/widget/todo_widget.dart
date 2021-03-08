@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_list/model/todo.dart';
+import 'package:todo_list/provider/todos.dart';
+import 'package:todo_list/utils.dart';
 
 class TodoWidget extends StatelessWidget {
   final Todo todo;
@@ -29,7 +32,7 @@ class TodoWidget extends StatelessWidget {
             IconSlideAction(
               color: Colors.red,
               caption: 'Delete',
-              onTap: () {},
+              onTap: () => deleteTodo(context, todo),
               icon: Icons.delete,
             )
           ],
@@ -71,4 +74,11 @@ class TodoWidget extends StatelessWidget {
           ],
         ),
       );
+
+  void deleteTodo(BuildContext context, Todo todo) {
+    final provider = Provider.of<TodosProvider>(context, listen: false);
+
+    provider.removeTodo(todo);
+    Utils.showSnackBar(context, 'Task deleted');
+  }
 }

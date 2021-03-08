@@ -26,4 +26,10 @@ class TodosProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void removeTodo(Todo todo) {
+    _Todos.remove(todo);
+
+    notifyListeners();
+  }
 }
