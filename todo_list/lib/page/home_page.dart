@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/main.dart';
 import 'package:todo_list/widget/add_todo_dialog_widget.dart';
+import 'package:todo_list/widget/completed_list_widget.dart';
 import 'package:todo_list/widget/todo_list_widget.dart';
 
 class HomePage extends StatefulWidget {
