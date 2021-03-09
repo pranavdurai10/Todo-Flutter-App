@@ -32,4 +32,12 @@ class TodosProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  bool toggleTodoStatus(Todo todo) {
+    todo.isDone = !todo.isDone;
+
+    notifyListeners();
+
+    return todo.isDone;
+  }
 }

@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
     // Contains the two main pages
     final tabs = [
       TodoListWidget(),
-      Container(),
+      CompletedListWidget(),
     ];
 
     return Scaffold(
