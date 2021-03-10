@@ -31,6 +31,17 @@ class _EditTodoPageState extends State<EditTodoPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text('Edit'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                final provider =
+                    Provider.of<TodosProvider>(context, listen: false);
+                provider.removeTodo(widget.todo);
+                Navigator.of(context).pop();
+              },
+            )
+          ],
         ),
         body: Padding(
           padding: EdgeInsets.all(16),
@@ -50,5 +61,15 @@ class _EditTodoPageState extends State<EditTodoPage> {
 
   void saveTodo() {
     final isValid = _formKey.currentState.validate();
+
+    if (!isValid) {
+      return;
+    } else {
+      final provider = Provider.of<TodosProvider>(context, listen: false);
+
+      provider.updateTodo(widget.todo, title, description);
+
+      Navigator.of(context).pop();
+    }
   }
 }
