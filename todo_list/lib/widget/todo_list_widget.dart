@@ -13,7 +13,7 @@ class TodoListWidget extends StatelessWidget {
     return todos.isEmpty
         ? Center(
             child: Text(
-            'No Tasks for today',
+            'No tasks for today',
             style: TextStyle(fontSize: 20),
           ))
         : ListView.separated(
